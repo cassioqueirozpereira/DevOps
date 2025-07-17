@@ -1,0 +1,11 @@
+services:
+  fastapi: # Serviço principal da aplicação FastAPI
+    build:
+      context: . # Diretório onde está o Dockerfile
+      dockerfile: Dockerfile # Nome do Dockerfile
+    container_name: api-escola # Nome do container gerado
+    ports:
+      - "8000:8000" # Mapeia a porta 8000 do host para o container
+    volumes:
+      - ./escola.db:/app/escola.db # Monta o arquivo de banco de dados como volume
+    restart: unless-stopped # Reinicia o container automaticamente em caso de falha
